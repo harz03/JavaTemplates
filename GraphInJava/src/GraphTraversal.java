@@ -22,7 +22,7 @@ public class GraphTraversal {
 
 	public static void dfs(ArrayList<ArrayList<Integer>> adj,Integer source,ArrayList<Boolean> visited) {
 		visited.set(source,true);
-		System.out.print("Source "+source);
+//		System.out.print("Source "+source);
 		for(Integer x:adj.get(source)) {
 //			System.out.println(x);
 			if(visited.get(x) == false) {

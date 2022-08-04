@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Graph extends GraphTraversal {
+public class Graph extends FindCycleInGraph {
 	public static ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 	
 	public static void addEdgeUndirected(Integer u,Integer v) {
@@ -20,7 +20,7 @@ public class Graph extends GraphTraversal {
 		for(int i=0;i<numberOfVertices;i++) {
 			int u = sc.nextInt();
 			int v = sc.nextInt();
-			addEdgeDirected(u,v);
+			addEdgeUndirected(u-1,v-1);
 		}
 		for(int i=0;i<numberOfNode;i++) {
 			System.out.print("node : "+i+" are ");
@@ -34,7 +34,12 @@ public class Graph extends GraphTraversal {
 			visited.add(false);
 		}
 		
-		dfs(adj,0,visited);
+		for(int i=0;i<numberOfNode;i++) {
+			if(visited.get(i) == false   ) {
+				if(FindCycleInGraph.dfs(adj, i,-1, visited))
+					System.out.println(i + "yes");
+			}
+		}
 	}
 	
 
